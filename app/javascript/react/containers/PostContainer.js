@@ -100,10 +100,9 @@ class PostContainer extends React.Component {
     if (photos.length > 0) {
       showphotos =
       <div className="post-photo">
-        <SmartGallery
-          rootStyle={{boxShadow: '2px 2px 4px #000'}}
-          images={images}
-          onImageSelect={(event, src) => window.open(src)}
+        <Gallery
+          images={photos}
+          enableImageSelection={false}
         />
       </div>
     }
