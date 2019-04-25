@@ -28,6 +28,7 @@ module FamDash
     # the framework and any gems in your application.
 
     # Don't generate system test files.
+    config.action_controller.include_all_helpers = false
     config.generators.system_tests = nil
   end
 end

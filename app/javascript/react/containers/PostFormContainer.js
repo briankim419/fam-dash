@@ -54,7 +54,7 @@ class PostFormContainer extends React.Component {
       let body = new FormData()
       body.append("body", this.state.body)
       let allFiles = this.state.file
-      fetch(`/api/v1/posts`, {
+      fetch(`/api/v1/families/${this.props.familyId}/posts`, {
         credentials: 'same-origin',
         method: 'POST',
         body: body,
@@ -78,7 +78,7 @@ class PostFormContainer extends React.Component {
           while (i >= 0){
             let photo_url_list = new FormData()
             photo_url_list.append("photo_url", allFiles[i])
-            fetch(`/api/v1/photos`, {
+            fetch(`/api/v1/families/${this.props.familyId}/photos`, {
               credentials: 'same-origin',
               method: 'POST',
               body: photo_url_list,

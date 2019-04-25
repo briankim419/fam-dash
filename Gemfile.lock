@@ -51,6 +51,8 @@ GEM
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
+    autoprefixer-rails (9.5.1)
+      execjs
     aws-eventstream (1.0.2)
     aws-partitions (1.149.0)
     aws-sdk-core (3.48.3)
@@ -71,6 +73,9 @@ GEM
     bindex (0.6.0)
     bootsnap (1.4.2)
       msgpack (~> 1.0)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     capybara (3.15.0)
       addressable
@@ -484,6 +489,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   bootsnap (>= 1.1.0)
+  bootstrap-sass (~> 3.3.6)
   capybara
   carrierwave
   carrierwave-aws

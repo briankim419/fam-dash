@@ -1,26 +1,34 @@
 class FamiliesController < ApplicationController
   def index
-    @Family = Family.all
+    @family = Family.all
   end
 
   # GET /Familys/1
   def show
-    @Family = Family.find(params[:id])
+    @family = Family.find_by_id(params[:id])
+    render action: 'show'
+  end
+
+  def show
+    if Family.find_by_id(params[:id]) != nil && Family.find(params[:id]).users.include?(current_user)
+      @family = Family.find(params[:id])
+      render action: 'show'
+    else
+      render json: "You are not authorized to view this group posts."
+    end
   end
 
   # GET /Familys/new
   def new
-    binding.pry
-    @Family = Family.new
+    @family = Family.new
   end
 
   # POST /Familys
   def create
-    @family = Family.new
-    binding.pry
+    @family = Family.new(family_params)
     if @family.save
-      flash[:notice] = 'Family was successfully created.'
-      redirect_to @family
+      Membership.create(family_id: @family.id, user_id: current_user.id)
+      Chat.create(family_id: @family.id)
     else
       render action: 'new'
     end
@@ -28,8 +36,7 @@ class FamiliesController < ApplicationController
 
   private
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def article_params
-    params.require(:article).permit(:title, :description, :url, :submitter)
+  def family_params
+    params.require(:family).permit(:family_name)
   end
 end

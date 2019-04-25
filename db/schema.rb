@@ -10,21 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_050214) do
+ActiveRecord::Schema.define(version: 2019_04_17_231835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "chats", force: :cascade do |t|
+    t.integer "family_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "text", null: false
     t.bigint "post_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "families", force: :cascade do |t|
     t.string "family_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "invites", force: :cascade do |t|
@@ -37,6 +47,23 @@ ActiveRecord::Schema.define(version: 2019_04_12_050214) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "family_id", null: false
+    t.index ["family_id"], name: "index_memberships_on_family_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body", null: false
+    t.bigint "user_id"
+    t.bigint "chat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "photos", force: :cascade do |t|
     t.bigint "post_id"
     t.string "photo_url"
@@ -45,6 +72,15 @@ ActiveRecord::Schema.define(version: 2019_04_12_050214) do
 
   create_table "posts", force: :cascade do |t|
     t.string "body", null: false
+    t.integer "family_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "todoitems", force: :cascade do |t|
+    t.string "todotext", null: false
+    t.boolean "complete_status", null: false
+    t.integer "family_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -6,12 +6,33 @@ class CommentFormContainer extends React.Component {
     super(props);
     this.state = {
       text: '',
-      errors: {}
+      errors: {},
+      currentUser: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateBody = this.validateBody.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
+}
+
+componentDidMount() {
+  if(this.props.id != undefined){
+    fetch(`/api/v1/posts`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ currentUser: body });
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 }
 
   validateBody(selection) {
@@ -43,7 +64,7 @@ class CommentFormContainer extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     if(this.validateBody(this.state.text)) {
-      this.props.addNewComment({text: this.state.text})
+      this.props.addNewComment({text: this.state.text, user: {first_name: this.state.currentUser.first_name}})
       let formPayload = new FormData()
       formPayload.append("text", this.state.text)
       this.handleClearForm()

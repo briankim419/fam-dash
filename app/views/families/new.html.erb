@@ -1,0 +1,5 @@
+<%= form_for @family , :url => families_path do |f| %>
+  <%= f.label :family_name, "Family Name" %><br />
+  <%= f.text_field :family_name %>
+  <%= f.submit 'Send' %>
+<% end %>

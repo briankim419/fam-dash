@@ -15,5 +15,6 @@
 //= require foundation
 //= require activestorage
 //= require_tree .
-
+//= require jquery
+//= require bootstrap-sprockets
 // $(function(){ $(document).foundation(); });

@@ -1,11 +1,12 @@
 class Api::V1::CommentsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   def index
-    render json: Post.find(params[:post_id]).comments
+    comments = Post.find(params[:post_id]).comments
+    render json: comments
   end
 
   def create
-    comment = Comment.new(comment_params)
+    comment = Comment.new(text: params[:text], post_id: params[:post_id], user_id: current_user.id)
     if comment.save
       render json: comment
     else
@@ -16,6 +17,6 @@ class Api::V1::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.permit(:text, :post_id)
+    params.permit(:text, :post_id, :currentuser)
   end
 end

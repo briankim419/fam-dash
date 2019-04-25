@@ -1,7 +1,7 @@
 class Api::V1::PostsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   def index
-    render json: Post.all
+    render json: current_user
   end
 
   def show
@@ -21,6 +21,6 @@ class Api::V1::PostsController < ApplicationController
   private
 
   def post_params
-    params.permit(:body, :photos, :comments)
+    params.permit(:body, :photos, :comments, :family_id)
   end
 end
