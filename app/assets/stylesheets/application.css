@@ -15,8 +15,9 @@
  *= require foundation_and_overrides
 
  */
- *= require_directory ./foundation-icons
- 
+*= require_tree
+*= require_tree ./foundation-icons
+
 img.close-chat{
   position: sticky;
   z-index: 9999;
