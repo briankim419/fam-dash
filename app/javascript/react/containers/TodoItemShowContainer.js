@@ -15,6 +15,7 @@ class TodoItemShowContainer extends Component {
     this.props.markTodoDone(this.props.index);
   }
   render() {
+    const closeIcon = require('../../../../app/assets/images/close-icon.png');
     var todoClass = this.props.item.complete_status ? "done" : "undone";
     return(
       <div className={todoClass}>

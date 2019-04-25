@@ -45,7 +45,8 @@ class FamilyIndexContainer extends Component {
     }
 
     return(
-      <div>
+      <div className="family-index">
+        <h2>Click on the family name to view portal</h2>
         {allFamilies}
       </div>
     );

@@ -1,3 +1,25 @@
 // Place all the styles related to the families controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.family-tile{
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  display: inline-block;
+  width: 30%;
+  padding-left: 10%;
+
+}
+
+.family-tile:hover{
+  background-color: gray;
+  border: black solid;
+  border-radius: 20px;
+}
+
+.family-index{
+  text-align: center;
+  float: center;
+  width: 90%;
+  padding-top: 2%;
+}
