@@ -9,6 +9,7 @@ gem "fog"
 gem "carrierwave"
 gem "warden"
 gem "active_model_serializers"
+gem 'redis'
 
 group :development, :test do
   gem "dotenv-rails"

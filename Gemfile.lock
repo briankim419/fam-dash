@@ -400,6 +400,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       optimist (~> 3.0)
+    redis (4.1.0)
     regexp_parser (1.4.0)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -508,6 +509,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.3)
+  redis
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
