@@ -90,7 +90,7 @@ Rails.application.configure do
       :address        => ENV['MAILGUN_SMTP_SERVER'],
       :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
       :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-      :domain         => 'sandbox8cf160e90a1f45bfbfe87f5637cd99bd.mailgun.org',
+      :domain         => 'family-dashboard.site',
       :authentication => :plain,
     }
   if ENV["RAILS_LOG_TO_STDOUT"].present?
