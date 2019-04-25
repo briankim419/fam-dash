@@ -29,8 +29,9 @@ class FamiliesController < ApplicationController
     if @family.save
       Membership.create(family_id: @family.id, user_id: current_user.id)
       Chat.create(family_id: @family.id)
+    else
+      render action: 'new'
     end
-    redirect_back(fallback_location: root_path)
   end
 
   private

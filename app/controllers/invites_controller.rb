@@ -21,7 +21,6 @@ class InvitesController < ApplicationController
          InviteMailer.new_user_invite(@invite, new_user_registration_path(:invite_token => @invite.token)).deliver
       end
     end
-    redirect_back(fallback_location: root_path)
   end
 
 

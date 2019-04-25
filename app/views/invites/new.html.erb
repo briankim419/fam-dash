@@ -1,24 +1,16 @@
-<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-<div class="grid-x">
-  <div class="small-8 small-offset-2">
-    <div class="tile callout">
-      <h2>Invite other family members! </h2>
-      <p>All recipients will automatically be added to the family and be notified by email.</p>
-      <p>If the recipient is not a member of Family-Dash then the email will include a link in the email to sign up for Family-Dash and join the family.</p>
-    <%= form_for @invite , :url => invites_path do |f| %>
-      <%= f.hidden_field :family_id, :value => @invite.family_id %>
-      <% @family_list.each do |family| %>
-        <%= f.radio_button(:family_id, family.id) %>
-        <%= f.label :family_id, "#{family.family_name}" %>
-      <% end %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-      <% if @token != nil %>
-        <%= hidden_field_tag :invite_token, @token %>
-      <% end %>
-      <%= f.submit 'Send' %>
-    <% end %>
-
-    </div>
-  </div>
-</div>
+<%= form_for @invite , :url => invites_path do |f| %>
+  <%= f.hidden_field :family_id, :value => @invite.family_id %>
+  <% @family_list.each do |family| %>
+    <%= f.radio_button(:family_id, family.id) %>
+    <%= f.label :family_id, "#{family.family_name}" %>
+  <% end %>
+  <%= f.fields_for :families do |family_form| %>
+        Enter Family Name: <%= family_form.text_field :family_name %>
+  <% end %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <% if @token != nil %>
+    <%= hidden_field_tag :invite_token, @token %>
+  <% end %>
+  <%= f.submit 'Send' %>
+<% end %>

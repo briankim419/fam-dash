@@ -1,12 +1,5 @@
-<div class="grid-x">
-  <div class="small-8 small-offset-2">
-    <div class="tile callout">
-      <h1>Create a Family-Dashboard Family!</h1>
-      <%= form_for @family , :url => families_path do |f| %>
-        <%= f.label :family_name, "Family Name" %><br />
-        <%= f.text_field :family_name %>
-        <%= f.submit 'Send' %>
-      <% end %>
-    <div>
-  </div>
-</div>
+<%= form_for @family , :url => families_path do |f| %>
+  <%= f.label :family_name, "Family Name" %><br />
+  <%= f.text_field :family_name %>
+  <%= f.submit 'Send' %>
+<% end %>
