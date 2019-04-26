@@ -139,7 +139,7 @@ class PostFormContainer extends React.Component {
             </aside>
           </section>
 
-        <input className="button post-button" type="submit" value="Submit" />
+        <input className="button comment-button" type="submit" value="Submit" />
       </form>
     );
   }

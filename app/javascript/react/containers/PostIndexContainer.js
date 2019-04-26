@@ -5,7 +5,6 @@ import PostFormContainer from '../containers/PostFormContainer';
 import ChatContainer from '../containers/ChatContainer';
 import TodoItemIndexContainer from '../containers/TodoItemIndexContainer'
 import {ScrollBox, ScrollAxes, FastTrack} from 'react-scroll-box';
-import chatLogo from '../../../../app/assets/images/speech-bubble.png';
 
 class PostIndexContainer extends React.Component {
   constructor(props) {
@@ -13,7 +12,8 @@ class PostIndexContainer extends React.Component {
     this.state = {
       posts: [],
       chatShow: false,
-      todoShow: false
+      todoShow: false,
+      familyName: ''
     };
     this.addNewPost = this.addNewPost.bind(this);
     this.clickChat = this.clickChat.bind(this);
@@ -33,8 +33,8 @@ class PostIndexContainer extends React.Component {
       .then(response => response.json())
       .then(body => {
         let temp = this.state.posts
-        temp = body.family.posts
-        this.setState({posts:temp});
+        temp = body.family.posts.reverse()
+        this.setState({posts:temp, familyName: body.family.family_name});
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -67,9 +67,9 @@ class PostIndexContainer extends React.Component {
   }
 
   render(){
-    const chatLogo = require('../../../../app/assets/images/speech-bubble.png');
+    const chatLogo = require('../../../../app/assets/images/chatIcon.png');
     const todoLogo =
-    require('../../../../app/assets/images/todoIcon.png');
+    require('../../../../app/assets/images/todoIcon1.png');
     let chatPopup
     let todoPopup
 
@@ -78,6 +78,7 @@ class PostIndexContainer extends React.Component {
         <TodoItemIndexContainer
           familyId={this.props.params.id}
           clickTodo={this.clickTodo}
+          familyName={this.state.familyName}
         />
     } else {
       todoPopup = <img src={todoLogo} onClick={this.clickTodo} className="todo-logo"/>
@@ -86,6 +87,7 @@ class PostIndexContainer extends React.Component {
       chatPopup =
         <div className="chat-box">
           <div className="chat-header">
+            <h4 className="chat-title">{this.state.familyName} chat</h4>
             <img className="close-chat" src="https://img.icons8.com/ios-glyphs/50/000000/cancel.png" onClick={this.clickChat}/>
           </div>
         <ChatContainer
@@ -109,6 +111,7 @@ class PostIndexContainer extends React.Component {
     });
     return(
       <div className="post-index-container">
+        <h2 className="family-name">Welcome to {this.state.familyName} dashboard!</h2>
         <PostFormContainer
           addNewPost={this.addNewPost}
           familyId={this.props.params.id}

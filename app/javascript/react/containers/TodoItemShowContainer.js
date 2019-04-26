@@ -15,15 +15,16 @@ class TodoItemShowContainer extends Component {
     this.props.markTodoDone(this.props.index);
   }
   render() {
-    const closeIcon = require('../../../../app/assets/images/close-icon.png');
+    const closeIcon = require('../../../../app/assets/images/close-icon-1.png');
+    const checkIcon = require('../../../../app/assets/images/check.png');
     var todoClass = this.props.item.complete_status ? "done" : "undone";
     return(
       <div className={todoClass}>
-         <i className="fi-check large" onClick={this.onClickDone}></i>
+        <img src={checkIcon} onClick={this.onClickDone} className="todo-check"/>
         <div className="todo-text" onClick={this.onClickDone}>
           {this.props.item.todotext}
         </div>
-        <i className="fi-x large" onClick={this.onClickClose}></i>
+        <img src={closeIcon} onClick={this.onClickClose} className="todo-close"/>
       </div>
     );
   }

@@ -2,21 +2,24 @@ import React from 'react';
 import { Router, Route, Switch, browserHistory } from 'react-router';
 import CommentFormContainer from '../containers/CommentFormContainer';
 import CommentTile from '../components/CommentTile';
-import Gallery from 'react-grid-gallery';
 import SmartGallery from 'react-smart-gallery';
-import FbImageLibrary from 'react-fb-image-grid'
+import Lightbox from 'react-images';
 
 class PostContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
+      images: [],
       comments: [],
       photoIndex: 0,
       isOpen: false
     };
     this.addNewComment = this.addNewComment.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.useLightbox = this.useLightbox.bind(this);
+    this.closeLightbox = this.closeLightbox.bind(this);
+    this.onClickNext = this.onClickNext.bind(this);
+    this.onClickPrev = this.onClickPrev.bind(this);
   }
   componentDidMount() {
     if(this.props.id != undefined){
@@ -38,6 +41,33 @@ class PostContainer extends React.Component {
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
+  }
+
+  useLightbox(src){
+    let tempImages = []
+    if (this.props.photos && this.props.photos.length > 0) {
+      let fixData = this.props.photos.map(photo => {
+        if(photo.photo_url){
+          tempImages.push(photo.photo_url.url)
+        }
+      })
+    }
+    let index = tempImages.indexOf(src)
+    this.setState({isOpen: true, photoIndex: index})
+  }
+
+  closeLightbox(){
+    this.setState({isOpen: false, photoIndex: 0})
+  }
+
+  onClickPrev(){
+    let currentIndex = this.state.photoIndex
+    this.setState({photoIndex: currentIndex - 1})
+  }
+
+  onClickNext(){
+    let currentIndex = this.state.photoIndex
+    this.setState({photoIndex: currentIndex + 1})
   }
   addNewComment(commentPayload) {
      let newComments = this.state.comments.concat(commentPayload)
@@ -75,34 +105,42 @@ class PostContainer extends React.Component {
    }
  }
   render(){
-    const photos = []
-    if (this.props.photos && this.props.photos.length > 0) {
-      let fixData = this.props.photos.map(photo => {
-        let temp
-        if(photo.photo_url){
-          temp = {src: photo.photo_url.url, thumbnail: photo.photo_url.url, thumbnailWidth: 500, thumbnailHeight: 500}
-        }
-        else{
-          temp = {src: photo.preview, thumbnail: photo.preview, thumbnailWidth: 500, thumbnailHeight: 500}
-        }
-        photos.push(temp)
-      })
-    }
     let showphotos
     const images = []
     if (this.props.photos && this.props.photos.length > 0) {
-      let fixData = this.props.photos.map(photo => {
+      let fixData = this.props.photos.map(photo => { 
         if(photo.photo_url){
           images.push(photo.photo_url.url)
+        } else {
+          images.push(photo.preview)
         }
       })
     }
-    if (photos.length > 0) {
+    const lightImages = []
+    if (this.props.photos && this.props.photos.length > 0) {
+      let fixData = this.props.photos.map(photo => {
+        if(photo.photo_url){
+          lightImages.push({src: photo.photo_url.url})
+        } else {
+          lightImages.push({src: photo.preview})
+        }
+      })
+    }
+    if (images.length > 0) {
       showphotos =
       <div className="post-photo">
-        <Gallery
-          images={photos}
-          enableImageSelection={false}
+        <SmartGallery
+          images={images}
+          onImageSelect={(event, src) => this.useLightbox(src)}
+        />
+        <Lightbox
+          images={lightImages}
+          currentImage={this.state.photoIndex}
+          backdropClosesModel={true}
+          isOpen={this.state.isOpen}
+          onClose={this.closeLightbox}
+          onClickPrev={this.onClickPrev}
+          onClickNext={this.onClickNext}
         />
       </div>
     }
@@ -126,7 +164,7 @@ class PostContainer extends React.Component {
         </div>
           {showphotos}
 
-        <div>
+        <div className="comment-list">
           {all_comments}
         </div>
         <CommentFormContainer

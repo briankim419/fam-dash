@@ -16,23 +16,23 @@
 </head>
 <body>
 
-  <nav class="top-bar">
+  <nav class="top-bar nav-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">FamDash</a></h1>
+        <h1><a href="/">Family-Dashboard</a></h1>
       </li>
     </ul>
 
     <section class="top-bar-section">
-      <ul class="right">
+      <ul class="right small-12 medium-12 columns">
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to 'Invite',  new_invite_path %></li>
-          <li><%= link_to 'Family',  new_family_path %></li>
-          <li><%= link_to 'Family Portal',  families_path %></li>
+          <li class="top-bar nav-bar"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li class="top-bar nav-bar"><%= link_to 'Invite',  new_invite_path %></li>
+          <li class="top-bar nav-bar"><%= link_to 'Create',  new_family_path %></li>
+          <li class="top-bar nav-bar"><%= link_to 'Family Portal',  families_path %></li>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <li class="top-bar nav-bar"><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li class="top-bar nav-bar"><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
     </section>

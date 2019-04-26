@@ -1,0 +1,62 @@
+nav.top-bar{
+ background-color: #45C7DC !important;
+ color: #E41B3B;
+ font-weight: bold;
+ height: 70px;
+ font-size: 20px;
+}
+.top-bar-section ul li {
+ background-color: #45C7DC !important;
+ color: #E41B3B;
+ font-weight: bold;
+}
+.top-bar-section ul li > a{
+
+ font-family: Helvetica;
+ font-size: 20px;
+}
+.menu a {
+ background-color: #45C7DC !important;
+ color: #E41B3B;
+ font-weight: bold;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+   background-color: #45C7DC !important;
+}
+
+.top-bar-section{
+ background-color: #45C7DC !important;
+ color: #E41B3B;
+}
+
+.top-bar .name h1 a{
+ padding-top: 10px;
+ font-size: 40px;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+ background-color: #45C7DC !important;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+ padding-top: 15px;
+ height: 70px;
+}
+
+.top-bar input, .top-bar select, .top-bar .button, .top-bar button {
+ font-size: 1.0rem;
+ height: 40px;
+ position: relative;
+ top: 0.53125rem;
+ width: 200px;
+ padding-top: 6px;
+ padding-bottom: 0px;
+ margin-top: 7px;
+ font-family: Helvetica;
+}
+
+
+body {
+ background-color: #f7f7f7;
+}

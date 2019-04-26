@@ -8,17 +8,17 @@ const PastMessagesTile = (props) => {
     pastMessages = props.pastMessages.map((message) => {
       if(message.user.id == currentUserId) {
         return(
-          <p key={message.id} className="currentuser-chat-text">
-            <strong>{message.user.first_name}: </strong>
-            {message.body}
-          </p>
+          <div key={message.id} className="currentuser-chat-text">
+            <strong className="user-name">{message.user.first_name}: </strong>
+              <p className="chat-message">{message.body}</p>
+          </div>
         )
       } else {
         return(
-          <p key={message.id} className="chat-text">
-            <strong>{message.user.first_name}: </strong>
-            {message.body}
-          </p>
+          <div key={message.id} className="chat-text">
+            <strong className="user-name">{message.user.first_name}: </strong>
+            <p className="chat-message">{message.body}</p>
+          </div>
         )
       }
     })

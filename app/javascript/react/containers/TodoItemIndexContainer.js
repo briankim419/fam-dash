@@ -127,6 +127,7 @@ class TodoItemIndexContainer extends React.Component {
     return(
       <div className="todo-index-container">
         <div className="todo-header">
+          <h4 className="todo-familyName">{this.props.familyName} To Do List </h4>
           <img className="close-chat" src="https://img.icons8.com/ios-glyphs/50/000000/cancel.png" onClick={this.props.clickTodo}/>
         </div>
         <div className="list-group">

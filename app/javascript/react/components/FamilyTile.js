@@ -12,9 +12,11 @@ const FamilyTile = props => {
 
   return(
     <div className="family-tile">
-      <Link to={`/families/${props.id}`}><h3>{props.name}</h3></Link>
-      <p>User List</p>
-      {userList}
+      <div className="family-body">
+        <Link to={`/families/${props.id}`}><h3 className="family-title">{props.name}</h3></Link>
+        <p>User List</p>
+        {userList}
+      </div>
     </div>
   )
 }

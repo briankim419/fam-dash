@@ -7,13 +7,13 @@
   padding-bottom: 10px;
   display: inline-block;
   width: 30%;
-  padding-left: 10%;
+  margin-left: 10%;
 
 }
 
 .family-tile:hover{
-  background-color: gray;
-  border: black solid;
+  background-color: white;
+  border: #6EEB83 solid;
   border-radius: 20px;
 }
 
@@ -22,4 +22,17 @@
   float: center;
   width: 90%;
   padding-top: 2%;
+  padding-left: 10%;
+}
+
+.family-body{
+  padding-left: 5%;
+}
+
+.family-title{
+  color: #45C7DC;
+}
+
+.family-welcome{
+  color: #45C7DC;
 }

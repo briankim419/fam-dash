@@ -106,7 +106,7 @@ componentDidMount() {
         <div className="comment-input">
           <input className="post-text" name='text' type='text' value={this.state.text} onChange={this.handleChange} />
         </div>
-        <input className="button post-button" type="submit" value="Submit" />
+        <input className="button comment-button" type="submit" value="Submit" />
         {errorDiv}
       </form>
     );
