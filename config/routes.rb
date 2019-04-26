@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   get 'controller/todoitems'
   get 'controller/todolists'
-  root 'homes#index'
+  devise_for :users
+  devise_scope :user do
+    authenticated :user do
+      root 'families#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 
   namespace :api do
     namespace :v1 do
@@ -80,7 +89,6 @@ Rails.application.routes.draw do
 
   resources :families
   resources :invites
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   resources :chats
 

@@ -46,7 +46,8 @@ class FamilyIndexContainer extends Component {
 
     return(
       <div className="family-index">
-        <h2 className="family-welcome">Click on the family name to view portal</h2>
+        <h2 className="family-welcome">Click on the family name to view dashboard</h2>
+        <h4 className="family-welcome-green">Create your family by clicking "Create" above</h4>
         {allFamilies}
       </div>
     );

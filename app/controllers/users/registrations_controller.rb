@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @newUser.save
        org =  Invite.find_by_token(@token)
        Membership.create(family_id: org.family_id, user_id: @newUser.id)
-       render "homes/index"
+       redirect_back(fallback_location: root_path)
     else
       super
     end

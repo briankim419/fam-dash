@@ -67,11 +67,13 @@ class PostIndexContainer extends React.Component {
   }
 
   render(){
-    const chatLogo = require('../../../../app/assets/images/chatIcon.png');
-    const todoLogo =
-    require('../../../../app/assets/images/todoIcon1.png');
+    const chatLogo = require('../../../../app/assets/images/chatIcon2.png');
+    const todoLogo = require('../../../../app/assets/images/todoIcon2.png');
+    const closeIcon = require('../../../../app/assets/images/close-icon-2.png');
+
     let chatPopup
     let todoPopup
+
 
     if(this.state.todoShow) {
       todoPopup =
@@ -88,7 +90,7 @@ class PostIndexContainer extends React.Component {
         <div className="chat-box">
           <div className="chat-header">
             <h4 className="chat-title">{this.state.familyName} chat</h4>
-            <img className="close-chat" src="https://img.icons8.com/ios-glyphs/50/000000/cancel.png" onClick={this.clickChat}/>
+            <img src={closeIcon} className="close-chat" onClick={this.onClickDone} onClick={this.clickChat} />
           </div>
         <ChatContainer
           id={this.props.params.id}

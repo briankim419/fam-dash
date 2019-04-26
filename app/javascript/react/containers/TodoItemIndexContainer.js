@@ -111,6 +111,7 @@ class TodoItemIndexContainer extends React.Component {
   }
 
   render(){
+    const closeIcon = require('../../../../app/assets/images/close-icon-2.png');
     if(this.state.todoItems.length > 0){
       var allItems = this.state.todoItems.map((item, index) => {
         return(
@@ -128,7 +129,7 @@ class TodoItemIndexContainer extends React.Component {
       <div className="todo-index-container">
         <div className="todo-header">
           <h4 className="todo-familyName">{this.props.familyName} To Do List </h4>
-          <img className="close-chat" src="https://img.icons8.com/ios-glyphs/50/000000/cancel.png" onClick={this.props.clickTodo}/>
+          <img className="close-chat" src={closeIcon} onClick={this.props.clickTodo}/>
         </div>
         <div className="list-group">
          {allItems}

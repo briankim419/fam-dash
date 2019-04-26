@@ -59,4 +59,21 @@ nav.top-bar{
 
 body {
  background-color: #f7f7f7;
+ font-family: 'Open Sans', sans-serif !important;
+}
+
+h1 {
+ font-family: 'Open Sans', sans-serif !important;
+}
+
+h2 {
+ font-family: 'Open Sans', sans-serif !important;
+}
+
+h3 {
+ font-family: 'Open Sans', sans-serif !important;
+}
+
+h4 {
+ font-family: 'Open Sans', sans-serif !important;
 }

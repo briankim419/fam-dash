@@ -15,6 +15,8 @@
  *= require foundation_and_overrides
 
  */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 input.input-group-field.inline-form{
   width: 100%;
   display: inline;
@@ -85,6 +87,8 @@ input.button.comment-button{
   overflow: hidden;
   padding-bottom: 15px;
 }
-.family-name{
-  text-align: center;
+
+.page-header{
+  color: #45C7DC;
+  padding-top: 5%;
 }

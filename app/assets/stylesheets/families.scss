@@ -6,9 +6,7 @@
   padding-top: 20px;
   padding-bottom: 10px;
   display: inline-block;
-  width: 30%;
-  margin-left: 10%;
-
+  width: 20%;
 }
 
 .family-tile:hover{
@@ -19,7 +17,6 @@
 
 .family-index{
   text-align: center;
-  float: center;
   width: 90%;
   padding-top: 2%;
   padding-left: 10%;
@@ -35,4 +32,14 @@
 
 .family-welcome{
   color: #45C7DC;
+}
+
+.family-welcome-green{
+  color: #6EEB83;
+}
+
+.family-name{
+  color: #45C7DC;
+  padding-top: 2%;
+  text-align: center;
 }
