@@ -110,13 +110,14 @@ class ChatContainer extends Component {
 
   render() {
     setTimeout(this.updateScroll, 0);
-    let messages = this.state.messages.map(message => {
+    let messages = this.state.messages.map(message => { 
       return(
         <Message
           key={message.messageId}
           message={message.message}
           firstName={message.user.first_name}
           currentUser={this.state.user}
+          messageUserId={message.user.id}
         />
       )
     }, this);
