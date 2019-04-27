@@ -42,15 +42,14 @@ class PostIndexContainer extends React.Component {
   addNewPost(postPayload) {
     let newPosts
     let fixPayload
-    if(postPayload.post_photo != undefined){
-      fixPayload = {body: postPayload.body, photos: postPayload.post_photo}
+    if(postPayload.post_photo != undefined && postPayload.post_photo.length > 0){
+      fixPayload = {id: postPayload.body.id, body: postPayload.body.body, comments: postPayload.body.comments ,photos: postPayload.post_photo}
       let temp = this.state.posts
       temp.unshift(fixPayload)
       this.setState({ posts: temp })
     } else {
-      fixPayload = {body: postPayload.body, photos: ""}
       let temp = this.state.posts
-      temp.unshift(fixPayload)
+      temp.unshift(postPayload.body)
       this.setState({ posts: temp })
     }
   }

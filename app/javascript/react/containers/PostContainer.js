@@ -49,6 +49,8 @@ class PostContainer extends React.Component {
       let fixData = this.props.photos.map(photo => {
         if(photo.photo_url){
           tempImages.push(photo.photo_url.url)
+        } else {
+          tempImages.push(photo.preview)
         }
       })
     }
@@ -108,7 +110,7 @@ class PostContainer extends React.Component {
     let showphotos
     const images = []
     if (this.props.photos && this.props.photos.length > 0) {
-      let fixData = this.props.photos.map(photo => { 
+      let fixData = this.props.photos.map(photo => {
         if(photo.photo_url){
           images.push(photo.photo_url.url)
         } else {

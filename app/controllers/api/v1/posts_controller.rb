@@ -10,7 +10,6 @@ class Api::V1::PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
-
     if post.save
       render json: post
     else

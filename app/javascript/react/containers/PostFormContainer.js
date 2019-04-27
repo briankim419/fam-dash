@@ -17,6 +17,7 @@ class PostFormContainer extends React.Component {
     this.validateBody = this.validateBody.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
     this.onDrop = this.onDrop.bind(this);
+    this.sendPost = this.sendPost.bind(this);
 }
 
   validateBody(selection) {
@@ -30,6 +31,10 @@ class PostFormContainer extends React.Component {
       this.setState({ errors: errorState })
       return true
     }
+  }
+
+  sendPost(body){
+    this.props.addNewPost({body: body, post_photo: this.state.file })
   }
 
   handleChange(event) {
@@ -49,8 +54,6 @@ class PostFormContainer extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     if(this.validateBody(this.state.body)) {
-      this.props.addNewPost({body: this.state.body, post_photo: this.state.file })
-
       let body = new FormData()
       body.append("body", this.state.body)
       let allFiles = this.state.file
@@ -72,6 +75,7 @@ class PostFormContainer extends React.Component {
       })
       .then(response => response.json())
       .then(body => {
+        this.sendPost(body.post)
         this.handleClearForm()
         if(allFiles.length > 0){
           let i = allFiles.length - 1
